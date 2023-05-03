@@ -135,3 +135,19 @@ If you get the following error for example, as an example you can run this comma
 docker -v
 ```
 
+#### How to run this on M1/M2 Macs?
+
+If you get following error when runnign `docker-compose`
+
+```
+⠏ mssql The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested     0.0s
+⠏ api The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested       0.0s
+⠏ app The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested       0.0s
+⠏ function The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested  0.0s
+```
+
+* Enable Rosetta in Docker Desktop: <https://levelup.gitconnected.com/docker-on-apple-silicon-mac-how-to-run-x86-containers-with-rosetta-2-4a679913a0d5#337f>
+
+* Make sure platform is set to `linux/amd64` in [docker-composer.build.yml](https://github.com/saulirajala/salvia/commit/00fa0cdcb019d34b4833d5a37dfcd2c689cd2544)
+
+* Do not use prebuilt Docker images from GitHub Packages container registry. Instead run `docker-compose -f docker-compose.yml -f docker-compose.build.yml up  -d --force-recreate --build --remove-orphans`
