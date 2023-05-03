@@ -14,7 +14,7 @@ module.exports = async function (context, req) {
     let urls = [];
 
     try {
-        const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox']});
+        const browser = await puppeteer.launch({ ignoreHTTPSErrors: true, args: ['--no-sandbox', '--disable-setuid-sandbox']});
 
         const viewport = {
             // check https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#pagesetviewportviewport
