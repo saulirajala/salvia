@@ -3,12 +3,14 @@ version: "3.5"
 
 services:
   mssql:
+    platform: linux/amd64
     image: salvia_mssql:local
     build: ./mssql
   api:
     image: salvia_api:local
     build: ./api
   function:
+    platform: linux/amd64
     image: salvia_function:local
     build: ./function
   app:
