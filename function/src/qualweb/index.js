@@ -21,6 +21,7 @@ module.exports = async function (context, req) {
 
         // check https://github.com/puppeteer/puppeteer/blob/v8.0.0/docs/api.md#puppeteerlaunchoptions
         const launchOptions = {
+            ignoreHTTPSErrors: true,
             args: ['--no-sandbox', '--disable-setuid-sandbox']
         };
         await qualweb.start(clusterOptions, launchOptions);
